@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+    <style>
+        @media screen and (max-width: 517px) {
+
+            /*basic style*/
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul,li {
+                list-style: none;
+            }
+
+            a {
+                text-decoration: none;
+                color: #222;
+            }
+
+            body {
+                font-family: "Noto Sans", sans-serif;
+                width: 100%;
+                /*496px*/
+                overflow-x: hidden;
+                margin: 0 auto;
+                background:#769FAF;
+
+            }
+
+            h1 {
+                font-family: "Jaro", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 600;
+                font-size: 2em;
+                font-style: normal;
+                color: #898989;
+                text-align: center;
+            }
+
+            h2 {
+                color: #7B0FFF;
+            }
+
+            h3 {
+                color: #222;
+            }
+
+            /*nav style*/
+            header{
+                height: 48px;
+                padding-top: 12px;
+            }
+            #deskNav{position: relative;}
+            .menu>li>a{
+                position:absolute;
+                top: -28px;
+                left: 22px;
+            }
+            /* submenu 기본 상태: 화면 밖에 숨김 */
+            #deskNav .submenu {
+                position: fixed;          /* 화면 전체에 고정 */
+                top:0;
+                left: -100%;              /* 처음에는 화면 밖으로 숨기기 */
+                width: 50%;
+                height: 100vh;            /* 세로 꽉 차게 */
+                background: #000;         /* 원하는 배경색 */
+                opacity: .9;
+                margin: 0;
+                padding: 50px 20px;       /* 안쪽 여백 (선택) */
+                list-style: none;
+                transition: left 0.4s ease;
+                box-sizing: border-box;
+                z-index: 999;             /* 다른 요소 위에 표시 */
+            }
+            /* 메뉴 보일 때 */
+            #deskNav .submenu.active {
+                left: 0; /* 화면 안으로 들어옴 */
+            }
+            #deskNav .submenu li {
+                width: 100%;
+                height: 30px;
+                margin: 20px 0;
+            }
+            #deskNav .submenu a {
+                color: #fff;              /* 링크 글자색 */
+                text-decoration: none;
+                font-size: 16px;
+            }
+            #deskNav .submenu a:hover{
+                color:yellow;
+            }
+            #deskNav .submenu .close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 2rem;
+                color: #fff;
+                cursor: pointer;
+                z-index: 1000;
+            }
+            #search{
+                position: absolute;
+                top: 27px;
+                right: 22px;
+            }
+            /* 검색창 기본 상태 숨김 */
+            #search .search-box {
+                position: fixed;
+                top: 0;
+                right: -100%;  /* 화면 밖으로 숨김 */
+                width: 100%;
+                height: 200px;
+                background: #000;
+                opacity: .97;
+                padding: 80px 20px;
+                box-sizing: border-box;
+                transition: right 0.4s ease;
+                z-index: 999;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            #search .search-box.active {
+                right: 0; /* 화면 안으로 들어옴 */
+            }
+            #search .search-box input {
+                width: 100%;
+                padding: 10px 40px 10px 10px; /* 오른쪽 버튼 공간 확보 */
+                font-size: 16px;
+                border: none;
+                outline: none;
+                border-radius: 7.5px;
+                position: relative;
+                box-sizing: border-box;
+            }
+            #search .search-box button {
+                position: absolute;
+                right: 18px;   /* search-box padding 고려 */
+                top: 80px;     /* search-box padding-top 고려 */
+                border: none;
+                width:48px;
+                height: 40px;
+                background: #222;
+                cursor: pointer;
+                padding: 0;
+                border-top-right-radius:7.5px;
+                border-bottom-right-radius:7.5px;
+            }
+            #search .search-box .close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 2rem;
+                color: #fff;
+                cursor: pointer;
+            }
+            /*contents style*/
+            #contents{
+                width: 100%;
+                height: 1vh;
+                margin-top: 2em;
+            }   
+            .thumbnail{
+                width: 75%;
+                margin: 0 auto;
+            }
+            .thumbnail img{
+                width: 100%;
+                height: 318px;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+            .detail{
+                width: 75%;
+                margin: 0 auto; 
+                margin-top: 1.4em;
+            }
+            .detail>.date{
+                color:#ccc;
+                font-size: 0.9em;
+            }
+            .detail>.ep{
+                font-size: 1.4em;
+                font-weight: 500;
+                color: #fff;
+            }
+            .play_bar{
+                width: 76%;
+                margin: 1.8em auto;
+            }
+            .play_bar>img{
+                width:100%;
+                margin: 0 auto;
+            }
+            .play_bar>p{
+                font-size: 0.8em;
+                color: #d9d9d9;
+            }
+            .play_bar>p>span{float: right;}
+            .play_btn>ul{
+                width: 54%;
+                margin: 0 auto;
+                padding: 0.5em 0;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            .volume{
+                width:74%;
+                margin: 2.4em auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .volume>a>img{
+                width: 100%;
+            }
+            .volume>a:nth-child(2){
+                margin: 0 28px 9px 22px;
+            }
+            .share{
+                width: 78%;
+                margin: 0 auto;
+                padding-top: 1em;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            /*tab style*/
+            #tab{
+                position:fixed;
+                bottom:0;
+                width: 100%;
+                height: 88px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin: 0 auto;
+                filter:drop-shadow(2px 4px 6px #898989);
+                background: #558498;
+                border-top-right-radius:15px;
+                border-top-left-radius:15px;
+            }
+            #tab a{
+                padding-top: 8px;
+                color:#ccc;
+            }
+            #tab p{
+                font-size: 10px;
+                color:#ccc;
+                text-align: center;
+            }
+            #tab>div:nth-child(3) p{
+                color:#F4A30D;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="deskHeader">
+        <h1>CINEBITE</h1>
+        <nav id="deskNav">
+            <ul class="menu">
+                <li><a href="#"><img src="images/toggle.png" width="20"></a>
+                    <ul class="submenu">
+                        <li><a href="#">Apple Podcast</a></li>
+                        <li><a href="#">Spotify</a></li>
+                        <li><a href="#">Podbbang</a></li>
+                        <li><a href="#">Youtube</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="search">
+            <a href="#"><img src="images/search_grey.png" height="18" alt="검색"></a>
+            <!-- 검색창 오버레이 -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
+                <button id="searchBtn"><img src="layout/search.png" height="22" alt="검색 버튼"></button>
+                <span class="close-btn">&times;</span>
+            </div>
+        </div>
+    </header>
+    <div id="contents">
+        <div class="thumbnail">
+            <img src="images/Aftersun/ae2643625b5ed.jpg" alt="애프터썬">
+        </div>
+
+        <div class="detail">
+            <p class="date">2025년 7월 19일</p>
+            <p class="ep">Ep.29 - F1더무비 영화 수다</p>
+        </div>
+        <div class="play_bar">
+            <img src="images/icon/Play_Bar.png" alt="재생바">
+            <p>0:00 <span>-1:07:10</span></p>
+        </div>
+        <div class="play_btn">
+            <ul>
+                <li> 
+                    <a href="#">
+                        <img src="images/icon/undo.png" alt="뒤로감기">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/icon/pause.png" alt="일시정지">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/icon/redo.png" alt="빨리감기">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="volume">
+            <a href="#">
+                <img src="images/icon/volume-off.png"  alt="무음">
+            </a>
+            <a href="#">
+                <img src="images/icon/Volume_Bar.png" alt="볼륨크기">
+            </a>
+            <a href="#">
+                <img src="images/icon/volume-up.png" alt="최대음량">
+            </a>
+        </div>
+        <ul class="share">
+            <li>
+                <a href="#">
+                    <img src="images/icon/indent.png" alt="리스트에 추가하기">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/icon/heart.png" alt="좋아요">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/icon/bookmark.png" alt="저장됨">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/icon/paper-plane.png" alt="공유하기">
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <div id="tab">
+        <div class="home">
+            <a href="Cinebite_mobile.html">
+                <img src="images/icon/home_e5.png" width="38">
+                <p>홈</p>
+            </a>
+        </div>
+        <div class="storage">
+            <a href="Cinebite_mobile_Storage.html">
+                <img src="images/icon/inbox_e5.png" width="38">
+                <p>보관함</p>
+            </a>
+        </div>
+        <div class="playing">
+            <a href="Cinebite_mobile_nowPlaying.html">
+                <img src="images/icon/play-circle_yel.png" width="30">
+                <p>재생중</p>
+            </a>
+        </div>
+        <div class="QnA">
+            <a href="Cinebite_mobile_QnA.html">
+                <img src="images/icon/rocketchat_e5.png" width="38">
+                <p>QnA</p>
+            </a>
+        </div>
+        <div class="myPage">
+            <a href="#">
+                <img src="images/icon/cookie-bite_e5.png" width="30">
+                <p>마이페이지</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

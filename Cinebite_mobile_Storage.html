@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>씨네바이트 보관함 탭</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+    <style>
+        @media screen and (max-width: 517px) {
+
+            /*basic style*/
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul,li {
+                list-style: none;
+            }
+
+            a {
+                text-decoration: none;
+                color: #222;
+            }
+
+            body {
+                font-family: "Noto Sans", sans-serif;
+                width: 100%;
+                /*496px*/
+                overflow-x: hidden;
+                margin: 0 auto;
+
+            }
+
+            h1 {
+                font-family: "Jaro", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 600;
+                font-size: 2em;
+                font-style: normal;
+                color: #898989;
+                text-align: center;
+            }
+
+            h2 {
+                color: #7B0FFF;
+            }
+
+            h3 {
+                color: #222;
+            }
+
+            /*nav style*/
+            header{
+                height: 48px;
+                padding-top: 12px;
+            }
+            #deskNav{position: relative;}
+            .menu>li>a{
+                position:absolute;
+                top: -28px;
+                left: 22px;
+            }
+            /* submenu 기본 상태: 화면 밖에 숨김 */
+            #deskNav .submenu {
+                position: fixed;          /* 화면 전체에 고정 */
+                top:0;
+                left: -100%;              /* 처음에는 화면 밖으로 숨기기 */
+                width: 100%;
+                height: 100vh;            /* 세로 꽉 차게 */
+                background: rgba(0, 0, 0, .9);         /* 원하는 배경색 */
+                margin: 0;
+                padding: 50px 20px;       /* 안쪽 여백 (선택) */
+                list-style: none;
+                transition: left 0.4s ease;
+                box-sizing: border-box;
+                z-index: 999;             /* 다른 요소 위에 표시 */
+            }
+            /* 메뉴 보일 때 */
+            #deskNav .submenu.active {
+                left: 0; /* 화면 안으로 들어옴 */
+            }
+            #deskNav .submenu li {
+                width: 100%;
+                height: 38px;
+                margin: 20px 0;
+            }
+            #deskNav .submenu a {
+                color: #fff;              /* 링크 글자색 */
+                text-decoration: none;
+                font-size: 18px;
+            }
+            #deskNav .submenu a:hover{
+                color:yellow;
+            }
+            #deskNav .submenu .close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 2rem;
+                color: #fff;
+                cursor: pointer;
+                z-index: 1000;
+            }
+            #search{
+                position: absolute;
+                top: 27px;
+                right: 22px;
+            }
+            /* 검색창 기본 상태 숨김 */
+            #search .search-box {
+                position: fixed;
+                top: 0;
+                right: -100%;  /* 화면 밖으로 숨김 */
+                width: 100%;
+                height: 370px;
+                background: rgba(0, 0, 0, .9); 
+                padding: 80px 20px;
+                box-sizing: border-box;
+                transition: right 0.4s ease;
+                z-index: 999;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            #search .search-box.active {
+                right: 0; /* 화면 안으로 들어옴 */
+            }
+            #search .search-box input {
+                width: 96%;
+                padding: 16px 40px 16px 10px; /* 오른쪽 버튼 공간 확보 */
+                font-size: 16px;
+                border: none;
+                outline: none;
+                border-radius: 7.5px;
+                position: relative;
+                box-sizing: border-box;
+            }
+            #search .search-box button {
+                position: absolute;
+                right: 24px;   /* search-box padding 고려 */
+                top: 160px;     /* search-box padding-top 고려 */
+                border: none;
+                width:48px;
+                height: 50px;
+                background: #696969;
+                cursor: pointer;
+                padding: 0;
+                border-top-right-radius:7.5px;
+                border-bottom-right-radius:7.5px;
+            }
+            #search .search-box .close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 2rem;
+                color: #ccc;
+                cursor: pointer;
+            }
+    
+            /*contents style*/
+            #recent{
+                margin: 30px 0 60px 0;
+            }
+            #recent h2{
+                text-indent: 1.5em;
+                font-weight: 600;
+                margin-bottom: 0.6em;
+            }
+            #recent>a{
+                display: flex;
+                justify-content: center;
+                justify-items: center;
+                margin: 1em 0.5em;
+            }
+            #recent>a>img{
+                width: 92%;
+                height: 50%;
+                border-radius: 15px;
+                object-fit: cover;
+            }
+
+            #collect{
+                margin-bottom: 60px;
+            }
+            #collect h2{
+                text-indent: 1.5em;
+                font-weight: 600;
+            }
+            #collect>div{ 
+                width: 92%;
+                margin: 0 auto;
+            }
+            /*수평 중앙 정렬 안 됨.*/
+            #collect ul{
+                padding: 0.5em;
+                display: flex;
+                flex-wrap: wrap; 
+            }
+            #collect ul>li{
+                align-items: center;
+                align-content: stretch;
+                margin: 0.6em;
+                width: 45%;
+                min-width: 120px;
+                height: 160px;
+            }
+            #collect ul>li>a>img{
+                border-radius: 15px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            #download{
+                margin-bottom: 60px;
+            }
+            #download h2{
+                text-indent: 1.5em;
+                font-weight: 600;
+                margin-bottom: 0.5em;
+            }
+            #download div{
+                width: 44px;
+                height: 42px;
+                border: 2px solid #7B0FFF;
+                border-radius: 100px;
+                margin-left: 10%;
+            }
+            #download div>p{
+                text-align: center;
+                vertical-align: center;
+                font-size: 36px;
+                line-height:42px;
+                color: #696969;
+            }
+            #download p:hover{
+                color:#7B0FFF;
+            }
+
+            /*tab style*/
+             #tab{
+                width: 100%;
+                height: 92px;
+                margin: 0 auto;
+                filter:drop-shadow(2px 4px 6px #898989);
+                background: #fff;
+                border-top-right-radius:15px;
+                border-top-left-radius:15px;
+            }
+            #tab .tab-inner{
+                width:94%;
+                display: flex;
+                padding-top: 8px;
+                padding-bottom: 22px;
+                justify-content: space-around;
+                align-items: flex-end;
+                margin: 0 auto;
+            }
+            #tab p{
+                font-size: 10px;
+                color:#949494;    
+            }
+            #tab .home,
+            #tab .storage,
+            #tab .playing,
+            #tab .QnA,
+            #tab .myPage{
+                text-align: center;
+            }
+            #tab>div:nth-child(2) p{
+                color:#ED9F10;
+            }
+            /*footer style*/
+            footer{
+                display: flex;
+                justify-content: center;
+                justify-items: center;
+                padding-top: 5em;
+                margin-bottom: 1.8em;
+            }
+            footer>p{
+                color:#ED9F10;
+                font-size: 0.9em;
+            }
+            footer>p>span{
+                font-family: "Jaro", sans-serif;
+                font-size: 1.2em;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <header id="deskHeader">
+        <h1>CINEBITE</h1>
+        <nav id="deskNav">
+            <ul class="menu">
+                <li><a href="#"><img src="images/toggle.png" width="20"></a>
+                    <ul class="submenu">
+                        <li><a href="#">Apple Podcast</a></li>
+                        <li><a href="#">Spotify</a></li>
+                        <li><a href="#">Podbbang</a></li>
+                        <li><a href="#">Youtube</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="search">
+            <a href="#"><img src="images/search_grey.png" height="18" alt="검색"></a>
+            <!-- 검색창 오버레이 -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
+                <button id="searchBtn"><img src="layout/search.png" height="22" alt="검색 버튼"></button>
+                <span class="close-btn">&times;</span>
+            </div>
+        </div>
+    </header>
+    <div id="contents">
+        <section id="recent">
+            <h2>최근 재생목록</h2>
+            <a href="#">
+                <img src="images/poster/f1themovie.jpg" alt="에프원더무비">
+            </a>
+        </section>
+        <section id="collect">
+            <h2>저장된 항목</h2>
+            <div>
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="images/snowpiercer/IMG_3493.jpg" alt="설국열차">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/Misericordia/images.jpg" alt="미세리코르디아">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/thegood_thebad_thewierd/images.jpg" alt="좋은놈 나쁜놈 이상한 놈">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/F1themovie/c2f6c3a87db1456292f34a8a63c3a722.png" alt="F1더무비">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/untamed/AAAABTgP4Q2EvST-2LyEJ4I7yi4AqDye9ea8B26_UQhvn03vpUh_K0U_Mr6AwKeobLTbUZS0GjY4-RJwqIWjVlrsdUH8zJZ7mVVgrplHPsMZB0McL8ONV-BoiSTv__PTSaNthfcd5A.jpg" alt="언테임드">
+                    </a>
+                </li>
+            </ul>
+            </div>
+        </section>
+        <section id="download">
+            <h2>다운로드된 항목</h2>
+            <a href="#">
+                <div>
+                    <p>+</p>
+                </div>
+            </a>
+        </section>
+    </div>
+     <footer>
+        <p>© 2025, <span>CINEBITE</span>. All rights reserved.</p>
+    </footer>
+    <div id="tab">
+        <div class="tab-inner">
+             <div class="home">
+            <a href="Cinebite_mobile.html">
+                <img src="images/icon/home.png" width="38">
+                <p>홈</p>
+            </a>
+        </div>
+        <div class="storage">
+            <a href="Cinebite_mobile_Storage.html">
+                <img src="images/icon/inbox_yel.png" width="38">
+                <p>보관함</p>
+            </a>
+        </div>
+        <div class="playing">
+            <a href="Cinebite_mobile_nowPlaying.html">
+                <img src="images/icon/play-circle.png" width="30">
+                <p>재생중</p>
+            </a>
+        </div>
+        <div class="QnA">
+            <a href="Cinebite_mobile_QnA.html">
+                <img src="images/icon/rocketchat.png" width="38">
+                <p>QnA</p>
+            </a>
+        </div>
+        <div class="myPage">
+            <a href="Cinebite_mobile_myPage.html">
+                <img src="images/icon/cookie-bite.png" width="30">
+                <p>마이페이지</p>
+            </a>
+        </div>
+        </div>
+       
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        /* 기존 메뉴 스크립트 */
+        const menuButton = document.querySelector("#deskNav > ul.menu > li > a"); 
+        const submenu = document.querySelector("#deskNav .submenu");
+
+        const closeBtn = document.createElement("span");
+        closeBtn.classList.add("close-btn");
+        closeBtn.innerHTML = "&times;";
+        submenu.appendChild(closeBtn);
+
+        menuButton.addEventListener("click", function(event) {
+            event.preventDefault(); 
+            submenu.classList.toggle("active");
+        });
+
+        submenu.addEventListener("click", function(event) {
+            if (event.target.closest(".menu-box")) return;
+            submenu.classList.remove("active");
+        });
+
+        closeBtn.addEventListener("click", function() {
+            submenu.classList.remove("active");
+        });
+
+        /* 검색 스크립트 */
+        const searchButton = document.querySelector("#search > a"); 
+        const searchBox = document.querySelector("#search .search-box");
+        const searchClose = searchBox.querySelector(".close-btn");
+        const searchInput = document.querySelector("#searchInput");
+        const searchBtn = document.querySelector("#searchBtn");
+
+        // 검색창 열기
+        searchButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            searchBox.classList.toggle("active");
+        });
+
+        // 닫기 버튼
+        searchClose.addEventListener("click", function() {
+            searchBox.classList.remove("active");
+        });
+
+        // 검색 버튼
+        searchBtn.addEventListener("click", function() {
+            const keyword = searchInput.value.trim();
+            if(keyword) {
+                alert("검색어: " + keyword); 
+                // 실제 검색 처리 연결 가능
+            } else {
+                alert("검색어를 입력하세요!");
+            }
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinebite Mobile Page</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+    <style>
+        @media screen and (max-width: 517px) {
+
+            /*basic style*/
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            a {
+                text-decoration: none;
+                color: #222;
+            }
+
+            body {
+                font-family: "Noto Sans", sans-serif;
+                width: 100%;
+                /*496px*/
+                overflow-x: hidden;
+                margin: 0 auto;
+
+            }
+
+            h1 {
+                font-family: "Jaro", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 600;
+                font-size: 2em;
+                font-style: normal;
+                color: #898989;
+                text-align: center;
+            }
+
+            h2 {
+                color: #7B0FFF;
+            }
+
+            h3 {
+                color: #222;
+            }
+
+            /*nav style*/
+            header{
+                height: 48px;
+                padding-top: 12px;
+            }
+            #deskNav{position: relative;}
+.menu>li>a{
+    position:absolute;
+    top: -28px;
+    left: 22px;
+}
+
+            #deskNav .submenu {
+                position: fixed;          /* 화면 전체에 고정 */
+                top:0;
+                left: -100%;              /* 처음에는 화면 밖으로 숨기기 */
+                width: 100%;
+                height: 100vh;            /* 세로 꽉 차게 */
+                background: rgba(0, 0, 0, .9);         /* 원하는 배경색 */
+                margin: 0;
+                padding: 50px 20px;       /* 안쪽 여백 (선택) */
+                list-style: none;
+                transition: left 0.4s ease;
+                box-sizing: border-box;
+                z-index: 999;             /* 다른 요소 위에 표시 */
+            }
+            /* 메뉴 보일 때 */
+            #deskNav .submenu.active {
+                left: 0; /* 화면 안으로 들어옴 */
+            }
+            #deskNav .submenu li {
+                width: 100%;
+                height: 38px;
+                margin: 20px 0;
+            }
+            #deskNav .submenu a {
+                color: #fff;              /* 링크 글자색 */
+                text-decoration: none;
+                font-size: 18px;
+            }
+            #deskNav .submenu a:hover{
+                color:yellow;
+            }
+            #deskNav .submenu .close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 2rem;
+                color: #fff;
+                cursor: pointer;
+                z-index: 1000;
+            }
+            #search{
+                position: absolute;
+                top: 27px;
+                right: 22px;
+            }
+            /* 검색창 기본 상태 숨김 */
+            #search .search-box {
+                position: fixed;
+                top: 0;
+                right: -100%;  /* 화면 밖으로 숨김 */
+                width: 100%;
+                height: 370px;
+                background: rgba(0, 0, 0, .9); 
+                padding: 80px 20px;
+                box-sizing: border-box;
+                transition: right 0.4s ease;
+                z-index: 999;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            #search .search-box.active {
+                right: 0; /* 화면 안으로 들어옴 */
+            }
+            #search .search-box input {
+                width: 96%;
+                padding: 16px 40px 16px 10px; /* 오른쪽 버튼 공간 확보 */
+                font-size: 16px;
+                border: none;
+                outline: none;
+                border-radius: 7.5px;
+                position: relative;
+                box-sizing: border-box;
+            }
+            #search .search-box button {
+                position: absolute;
+                right: 24px;   /* search-box padding 고려 */
+                top: 160px;     /* search-box padding-top 고려 */
+                border: none;
+                width:48px;
+                height: 50px;
+                background: #696969;
+                cursor: pointer;
+                padding: 0;
+                border-top-right-radius:7.5px;
+                border-bottom-right-radius:7.5px;
+            }
+            #search .search-box .close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 2rem;
+                color: #ccc;
+                cursor: pointer;
+            }
+    
+            /*contents style*/
+            #New {
+                width: 92%;
+                min-height: 385px;
+                background: url(images/F1themovie/031325_F1_Trailer_Announcement_Inline_Image_01_inline_image_post.jpg.large.jpg) no-repeat 50% 0;
+                background-size: 100%;
+                border-radius: 15px;
+                margin: 9px auto;
+                overflow: hidden;
+            }
+
+            #New h2{
+                text-indent: 1.1em;
+                line-height: 3.4em;
+                color: #fff;
+                font-weight: 600;
+            }
+
+            #recommend {
+                margin: 5em auto;
+                position: relative;
+            }
+
+            #recommend h2 {
+                text-indent: 1.5em;
+                font-weight: 600;
+                margin-bottom: 0.2em;
+            }
+
+            .recommend_pointer{
+                position: absolute;
+                right: 18px;
+                top: 6px;
+            }
+
+            .recommend_pointer>a>img{
+                height: 1.6em;
+                opacity: 0.8;
+            }
+
+            .recommend_inner {
+                min-width:242px;
+                border-top: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                padding: 0.4em 1em 1em 1em;
+                margin: 0 auto;
+            }
+
+            .episode {
+                width: 94%;
+                min-height: 150px;
+                margin: 0 auto;
+                position: relative;
+            }
+            .episode h3 {
+                color: #222;
+                font-weight: 500;
+                margin: 0.4em;
+            }
+
+            .episode p {
+                color: #696969;
+                font-size: 0.8em;
+                line-height: 1.5em;
+                width: 64%;
+                height: 60px;
+                margin: 12px 5px;
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .episode .thumb img {
+                width: 100px;
+                height: 100px;
+                border-radius: 0.9em;
+                position: absolute;
+                top: 58px;
+                right: 0.8em;
+            }
+
+            .episode .play_btn {
+                width: 78px;
+                height: 30px;
+                margin-top: 14px;
+                background: #FFF4D0;
+                border-radius: 15px;
+                position: relative;
+            }
+
+            .episode .play_btn img {
+                width: 16px;
+                position: absolute;
+                top: 6px;
+                left: 14px;
+            }
+
+            .episode .play_btn span {
+                color: #ED9F10;
+                position: absolute;
+                font-size: 15px;
+                top: 2px;
+                left: 35px;
+            }
+
+            .more{
+                position: absolute;
+                right: 18px;
+                bottom: 8px;
+            }
+
+            #video{
+                margin-bottom: 1.2em;
+            }
+            #video h2 {
+                text-indent: 1.5em;
+                font-weight: 600;
+                margin-bottom: 0.5em;
+            }
+
+            #video>ul{
+                overflow-x: auto;
+                min-width: 402px;
+                height: 240px;
+                white-space: nowrap;
+                padding-left: 12px;
+                display: flex;
+            }
+
+            #video>ul::-webkit-scrollbar {display: none;}
+
+            #video>ul>li{
+                justify-content: space-evenly;
+            }
+            #video>ul>li>a{
+                padding: 25px 14px;
+            }
+             #video>ul>li>a>img{
+                width: 340px;
+                height: 180px;
+                border-radius: 15px;
+            }
+
+            #crumble h2 {
+                text-indent: 1.5em;
+                font-weight: 600;
+                margin-bottom: 0.5em;
+            }
+
+            #crumble>ul{
+                overflow-x: auto;
+                min-width: 402px;
+                height: 410px;
+                white-space: nowrap;
+                padding-left: 12px;
+                display: flex;
+            }
+
+            #crumble>ul::-webkit-scrollbar {display: none;}
+
+            #crumble>ul>li{
+                justify-content: space-evenly;
+            }
+
+            #crumble>ul>li>a{
+                padding: 25px 16px;
+            }
+
+            #crumble>ul>li>a>img{
+                width: 180px;
+                height: 320px;
+                border-radius: 15px;
+                object-fit: cover;
+            }
+            #greeting{
+                margin-bottom: 60px;
+            }
+
+            #greeting h2{
+                text-indent: 1.5em;
+                font-weight: 600;
+                margin-bottom: 0.5em;
+            }
+
+            #greeting>div{
+                border-top: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                padding: 2em 0;
+                margin-bottom: 2.4em;
+            }
+
+            #greeting>div>p{
+                width:78%;
+                margin: 0 auto;
+                font-size: 1em;
+                line-height: 1.6em;
+            }
+
+            #info h2{
+                text-indent: 1.5em;
+                font-weight: 600;
+                margin-bottom: 0.5em;
+            }
+
+            #info>div{
+                width: 84%;
+                margin: 0 auto;
+            }
+
+            #info>div>p{
+                border-bottom: 1px solid #ccc;
+                padding: 1em 0.2em;
+                color: #949494;
+                font-size: 0.9em;
+            }
+
+            #info>div>p>span{
+                float: right;
+                color: #000;
+            }
+
+            #info>div>p>span>a{
+                color:blue;
+            }
+            /*tab style*/
+             #tab{
+                width: 100%;
+                height: 92px;
+                margin: 0 auto;
+                filter:drop-shadow(2px 4px 6px #898989);
+                background: #fff;
+                border-top-right-radius:15px;
+                border-top-left-radius:15px;
+            }
+            #tab .tab-inner{
+                width:94%;
+                display: flex;
+                padding-top: 8px;
+                padding-bottom: 22px;
+                justify-content: space-around;
+                align-items: flex-end;
+                margin: 0 auto;
+            }
+            #tab p{
+                font-size: 10px;
+                color:#949494;    
+            }
+            #tab .home,
+            #tab .storage,
+            #tab .playing,
+            #tab .QnA,
+            #tab .myPage{
+                text-align: center;
+            }
+            #tab .home p{
+                color:#ED9F10;
+            }
+
+            /*footer style*/
+            footer{
+                display: flex;
+                justify-content: center;
+                justify-items: center;
+                margin-top: 8em;
+                margin-bottom: 15px;
+            }
+
+            footer>p{
+                color:#ED9F10;
+                font-size: 0.6em;
+            }
+
+            footer>p>span{
+                font-family: "Jaro", sans-serif;
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="deskHeader">
+        <h1>CINEBITE</h1>
+        <nav id="deskNav">
+            <ul class="menu">
+                <li><a href="#"><img src="images/toggle.png" width="20"></a>
+                    <ul class="submenu">
+                        <li><a href="#">Apple Podcast</a></li>
+                        <li><a href="#">Spotify</a></li>
+                        <li><a href="#">Podbbang</a></li>
+                        <li><a href="#">Youtube</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="search">
+            <a href="#"><img src="images/search_grey.png" height="18" alt="검색"></a>
+            <!-- 검색창 오버레이 -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
+                <button id="searchBtn"><img src="layout/search.png" height="22" alt="검색 버튼"></button>
+                <span class="close-btn">&times;</span>
+            </div>
+        </div>
+    </header>
+    <div id="contents">
+        <section id="New">
+            <a href="#">
+                <h2>
+                    최신 에피소드
+                </h2>
+            </a>
+            <!--이미지에 hover하면 링크 잡히게 수정하기-->
+        </section>
+        <section id="recommend">
+            <h2>추천 목록</h2>
+            <div class="recommend_pointer">
+                <a href="#">
+                    <img src="images/pointer_purple.png">
+                </a>
+            </div>
+            <div class="recommend_inner">
+                <div class="episode">
+                    <h3>Ep.29 - 뛰뛰빵빵@@ 할리우드 테토남 빵형의 분노의 질주!! F1더무비</h3>
+                    <p>
+                        루이스 해밀턴이 포뮬러원 영화를 만들었다고? 심지어 브래드 피트가 주연이라고?? 믿을 수 없는 조합이 선보이는 본격 카레이싱 영화
+                    </p>
+                    <div class="thumb">
+                        <img src="images/poster/upload/F1_The_Movie/f1_instaFeed.jpg">
+                    </div>
+                    <div class="play_btn">
+                        <img src="images/playbtn_orange.png">
+                        <span>62분</span>
+                    </div>
+                </div>
+                <div class="more">
+                    <img src="images/more_gray.png"><!--더보기가 될 아이콘 추가-->
+                </div>
+            </div>
+
+        </section>
+        <section id="video">
+            <h2>비디오</h2>
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/Moving/moving_thumbnail.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/Misericorde/01_thumbnail.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/F1_The_Movie/f1_thumbnail.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/K-pop_Demon_Hunters/kpopdemonhunters_thumbnail.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/Thegood_Thebad_Theweird/thegbw_thumbnail.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/Snowpiercer/_thumbnail(re).jpg">
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <section id="crumble">
+            <h2>크럼블</h2>
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/F1_The_Movie/f1_instaStory3.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/K-pop_Demon_Hunters/kdh_instaStory.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/Misericorde/3_instaStory.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/Moving/341431_346791_4814.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/Snowpiercer/15196_11634_5759.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/poster/upload/Thegood_Thebad_Theweird/images.jpg">
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <section id="greeting">
+            <h2>소개</h2>
+            <div>
+                <p>안녕하세요, 영화 덕후 여러분!</p>
+                <p>씨네, 양양, 은하와 함께하는 간식같은 영화 수다</p>
+                <p>씨네바이트에 오신 걸 환영합니다.</p>
+            </div>
+        </section>
+        <section id="info">
+            <h2>정보</h2>
+            <div>
+                <p>제작진 <span>씨네바이트(Cinebite)</span></p>
+                <p>에피소드 <span>32</span></p>
+                <p>등급 <span>전체 연령 사용가</span></p>
+                <p>저작권 <span>ⓒ씨네바이트(Cinebite)</span></p>
+                <p>웹사이트 <span><a href="#">씨네바이트(Cinebite)</a></span></p>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>© 2025, <span>CINEBITE</span>. All rights reserved.</p>
+    </footer>
+
+    <div id="tab">
+        <div class="tab-inner">
+            <div class="home">
+                <a href="Cinebite_mobile.html">
+                    <img src="images/icon/home_yel.png" width="38">
+                    <p>홈</p>
+                </a>
+            </div>
+            <div class="storage">
+                <a href="Cinebite_mobile_Storage.html">
+                    <img src="images/icon/inbox.png" width="38">
+                    <p>보관함</p>
+                </a>
+            </div>
+            <div class="playing">
+                <a href="Cinebite_mobile_nowPlaying.html">
+                    <img src="images/icon/play-circle.png" width="34" height="34">
+                    <p>재생중</p>
+                </a>
+            </div>
+            <div class="QnA">
+                <a href="Cinebite_mobile_QnA.html">
+                    <img src="images/icon/rocketchat.png" width="38">
+                    <p>QnA</p>
+                </a>
+            </div>
+            <div class="myPage">
+                <a href="Cinebite_mobile_myPage.html">
+                    <img src="images/icon/cookie-bite.png" width="34" height="34">
+                    <p>마이페이지</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    /* 기존 메뉴 스크립트 */
+    const menuButton = document.querySelector("#deskNav > ul.menu > li > a"); 
+    const submenu = document.querySelector("#deskNav .submenu");
+
+    const closeBtn = document.createElement("span");
+    closeBtn.classList.add("close-btn");
+    closeBtn.innerHTML = "&times;";
+    submenu.appendChild(closeBtn);
+
+    menuButton.addEventListener("click", function(event) {
+        event.preventDefault(); 
+        submenu.classList.toggle("active");
+    });
+
+    submenu.addEventListener("click", function(event) {
+        if (event.target.closest(".menu-box")) return;
+        submenu.classList.remove("active");
+    });
+
+    closeBtn.addEventListener("click", function() {
+        submenu.classList.remove("active");
+    });
+
+    /* 검색 스크립트 */
+    const searchButton = document.querySelector("#search > a"); 
+    const searchBox = document.querySelector("#search .search-box");
+    const searchClose = searchBox.querySelector(".close-btn");
+    const searchInput = document.querySelector("#searchInput");
+    const searchBtn = document.querySelector("#searchBtn");
+
+    // 검색창 열기
+    searchButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        searchBox.classList.toggle("active");
+    });
+
+    // 닫기 버튼
+    searchClose.addEventListener("click", function() {
+        searchBox.classList.remove("active");
+    });
+
+    // 검색 버튼
+    searchBtn.addEventListener("click", function() {
+        const keyword = searchInput.value.trim();
+        if(keyword) {
+            alert("검색어: " + keyword); 
+            // 실제 검색 처리 연결 가능
+        } else {
+            alert("검색어를 입력하세요!");
+        }
+    });
+});
+</script>
+</body>
+
+</html>

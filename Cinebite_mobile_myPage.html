@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jaro:opsz@6..72&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+    <style>
+        @media screen and (max-width: 517px) {
+
+            /*basic style*/
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul,li {
+                list-style: none;
+            }
+
+            a {
+                text-decoration: none;
+                color: #222;
+            }
+
+            body {
+                font-family: "Noto Sans KR", sans-serif;
+                width:100%;
+                /*496px*/
+                overflow-x: hidden;
+                margin: 0 auto;
+            }
+
+            h1 {
+                font-family: "Jaro", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 600;
+                font-size: 2em;
+                font-style: normal;
+                color: #ED9F10;
+                text-align: center;
+                margin: 0.4em auto;
+                opacity:0.9;
+            }
+
+            h2 {
+                color: #ED9F10;
+            }
+
+            h3 {
+                color: #222;
+            }
+
+            /*contents style*/
+            #picture{
+                width: 100%;
+                height: 420px;
+                background: url(images/F1themovie/a99b14ee44e0427dbbda872307d19343.png) no-repeat 0 50%;
+                position:relative;
+            }
+            #picture .setting{
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                margin-right: 6px;
+                padding-top: 12px; 
+            }
+            #picture .setting>a{
+                margin-right: 10px;
+            }
+            #picture .profile{
+                width: 120px;
+                height: 120px;
+                margin: 0 auto;
+                left: 39%;
+                margin-top: 12.2em;
+            }
+            #picture .profile img{
+                width: 100%;
+                height: 100%;
+                border-radius: 100px;
+                object-fit: cover;
+                box-shadow: 1px 2px 4px #696969;
+            }
+            #picture .profile p{
+                text-align: center;
+            }
+            #picture .more{
+                position:absolute;
+                right: 1em;
+                bottom: 8px;
+            }
+            #keyword{
+                width: 85%;
+                margin: 1.8em auto;
+            }
+            #keyword ul{
+                display: flex;
+                flex-direction: row;
+                flex-flow: row wrap;
+            }
+            #keyword ul li{
+                border: 1px solid #7B0FFF;
+                border-radius: 25px;
+                padding: 8px 10px;
+                margin-right: 10px;
+                margin-bottom: 12px;
+            }
+            /*hover할 때 배경과 글자색 반전시키기*/
+            #keyword ul li a{
+                padding: 10px;
+                color:#7B0FFF;
+                font-size: 14px;
+            }
+            #keyword ul li a:hover{
+                color:#222;
+            }
+            #favorites{
+                margin-top: 3.2em;
+                margin-bottom: 3em;
+                position: relative;
+            }
+            #favorites h2{
+                text-indent: 1.5em;
+                font-weight: 600;
+                margin-bottom: 0.5em;
+            }
+            #favorites .arrow{
+                position: absolute;
+                top: 0;
+                right: 4.2%;
+            }
+            #favorites article{
+                height: 80px;
+                border-top: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+                padding: 6px 22px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+            }
+            #favorites article .thumb>img{
+                object-fit: cover;
+                border-radius: 8px;
+                padding-top:4px;
+            }
+            #favorites article .title{
+                width: 68%;
+                min-width:230px;
+                padding: 0 1.8em 0 1em;
+            }
+            #favorites article .title>p:first-child{
+                color:#222;
+                font-weight: 500;
+                font-size: 15px;
+                padding-bottom: 4px;
+            }
+            #favorites article .title>p:last-child{
+                color: #949494;
+                font-size: 11px;
+            }
+            #myQnA{
+                padding-top: 1em;
+            }
+            #myQnA h2{
+                text-indent: 1.5em;
+                font-weight: 500;
+                margin-bottom: 0.2em;
+            }
+            #myQnA>div{
+                width: 82%;
+                height: 48px;
+                min-width: 235px;
+                padding: 0 1em;
+                margin: 10px auto;
+                border: 1px solid #ccc;
+                border-radius: 12px;
+                overflow: hidden;
+                position: relative;
+            }
+            #myQnA p{
+                line-height: 46px;
+                text-indent: 0.4em;
+            }
+            #myQnA span{
+                float: right;
+                padding-right:32px;
+            }
+            #myQnA img{
+                position:absolute;
+                top: 10px;
+                right: 18px;
+            }
+            /*tab style*/
+            #tab{
+                width: 100%;
+                height: 88px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin: 0 auto;
+                filter:drop-shadow(2px 4px 6px #898989);
+                background: #fff;
+                border-top-right-radius:15px;
+                border-top-left-radius:15px;
+            }
+            #tab a{
+                padding-top: 8px;
+            }
+            #tab p{
+                font-size: 10px;
+                color:#949494;
+                text-align: center;
+            }
+            #tab>div:nth-child(4) p{
+                color:#ED9F10;
+            }
+            /*footer style*/
+            footer{
+                display: flex;
+                justify-content: center;
+                justify-items: center;
+                padding-top: 4em;
+                margin-bottom: 1.8em;
+            }
+            footer>p{
+                color:#ED9F10;
+                font-size: 0.9em;
+            }
+            footer>p>span{
+                font-family: "Jaro", sans-serif;
+                font-size: 1.2em;
+            }
+
+            /*tab style*/
+            #tab{
+                width: 100%;
+                height: 92px;
+                margin: 0 auto;
+                filter:drop-shadow(2px 4px 6px #898989);
+                background: #fff;
+                border-top-right-radius:15px;
+                border-top-left-radius:15px;
+            }
+            #tab .tab-inner{
+                width:94%;
+                display: flex;
+                padding-top: 8px;
+                padding-bottom: 22px;
+                justify-content: space-around;
+                align-items: flex-end;
+                margin: 0 auto;
+            }
+            #tab p{
+                font-size: 10px;
+                color:#949494;    
+            }
+            #tab .home,
+            #tab .storage,
+            #tab .playing,
+            #tab .QnA,
+            #tab .myPage{
+                text-align: center;
+            }
+            #tab .myPage p{
+                color:#ED9F10;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div id="contents">
+        <header id="picture">
+            <div class="setting">
+                <a href="#">
+                    <img src="images/icon/setting.png" alt="설정">
+                </a>
+                <a href="#">
+                    <img src="images/icon/export.png" alt="내보내기">
+                </a>
+                <a href="#">
+                    <img src="images/icon/alert.png" alt="알림">
+                </a>
+            </div>
+            <div class="profile">
+                <a href="#">
+                    <img src="images/snowpiercer/1331542_2037496_934.jpg" alt="프로필사진">
+                </a>
+                <p>닉네임</p>
+            </div>
+            <a class="more" href="#">
+                <img src="images/more_gray.png" alt="더보기">
+            </a>
+        </header>
+        <h1>CINEBITE</h1>
+        <section id="keyword">
+            <ul>
+                <li>
+                    <a href="#">
+                    쿠엔틴 타란티노
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    액션
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    여성주의
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    매드맥스:분노의 도로
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    제시카 차스테인
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    듄
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    실화 기반
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    스파이더맨
+                    </a>
+                </li>
+                <li> 
+                    <a href="#">
+                        <img src="images/plus_grey.png" width="14">
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <section id="favorites">
+            <h2>즐겨찾는 목록</h2>
+            <a class="arrow" href="#">
+                <img src="images/icon/angle-right.png" width="34" alt="더보기">
+            </a>
+            <article>
+                <div class="thumb">
+                    <img src="images/poster/upload/Misericorde/0_Cardnews.jpg" width="68" height="68" alt="썸네일">
+                </div>
+                <div class="title">
+                    <p>Ep.30 - 신의 자비로움은 모든 걸 용서하십니다. 사람을 죽였는데도요?</p>
+                    <p>1:24:01</p>
+                </div>
+                <img src="images/icon/Heart_brightyellow.png" width="24" height="24" alt="좋아요">
+            </article>
+            <article>
+                <div class="thumb">
+                    <img src="images/poster/upload/F1_The_Movie/f1_instaFeed.jpg" width="68" height="68" alt="썸네일">
+                </div>
+                <div class="title">
+                    <p>Ep.29 - 뛰뛰빵빵@@ 할리우드 테토남 빵형의 본능의 질주 F1더무비</p>
+                    <p>1:00:03</p>
+                </div>
+                <img src="images/icon/Heart_brightyellow.png" alt="좋아요">
+            </article>
+            <article>
+                <div class="thumb">
+                    <img src="images/poster/upload/K-pop_Demon_Hunters/kdh_instaFeed.jpg" width="68" height="68"  alt="썸네일">
+                </div>
+                <div class="title">
+                    <p>Ep.28 - 충격! 귀신잡는 아이돌 실존! 케이팝 데몬 헌터스</p>
+                    <p>1:07:17</p>
+                </div>
+                <img src="images/icon/Heart_brightyellow.png" alt="좋아요">
+            </article>
+        </section>
+        <section id="myQnA">
+            <div>
+                <a href="#">
+                    <p>내가 쓴 글<span>21개</span></p>
+                    <img src="images/icon/angle-right.png" alt="더보기">
+                </a> 
+            </div>
+            <div>
+                    <a href="#">
+                    <p>나의 답변<span>14개</span></p>
+                    <img src="images/icon/angle-right.png" alt="더보기">
+                </a>
+            </div>
+            <div>
+                <a href="#">
+                    <p>내가 쓴 댓글<span>35개</span></p>
+                    <img src="images/icon/angle-right.png" alt="더보기">
+                </a>
+            </div>
+            <div>
+                <a href="#">
+                    <p>스크랩<span>7개</span></p>
+                    <img src="images/icon/angle-right.png" alt="더보기">
+                </a>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>© 2025, <span>CINEBITE</span>. All rights reserved.</p>
+    </footer>
+
+    <div id="tab">
+        <div class="tab-inner">
+            <div class="home">
+                <a href="Cinebite_mobile.html">
+                    <img src="images/icon/home.png" width="38">
+                    <p>홈</p>
+                </a>
+            </div>
+            <div class="storage">
+                <a href="Cinebite_mobile_Storage.html">
+                    <img src="images/icon/inbox.png" width="38">
+                    <p>보관함</p>
+                </a>
+            </div>
+            <div class="playing">
+                <a href="Cinebite_mobile_nowPlaying.html">
+                    <img src="images/icon/play-circle.png" width="34" height="34">
+                    <p>재생중</p>
+                </a>
+            </div>
+            <div class="QnA">
+                <a href="Cinebite_mobile_QnA.html">
+                    <img src="images/icon/rocketchat.png" width="38">
+                    <p>QnA</p>
+                </a>
+            </div>
+            <div class="myPage">
+                <a href="Cinebite_mobile_myPage.html">
+                    <img src="images/icon/cookie-bite_yel.png" width="34" height="34">
+                    <p>마이페이지</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
